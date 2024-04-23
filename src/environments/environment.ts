@@ -8,8 +8,8 @@ export const environment = {
   error: {
     "INVALID_DETAILS": "Invalid Details",
   },
-  // url: 'http://localhost:8080/api',
-  url: 'https://comfortcare.co.nz/cm/api'
+  url: 'http://localhost:8080/api',
+  // url: 'https://comfortcare.co.nz/cm/api'
 };
 
 /*

@@ -1,0 +1,61 @@
+<processing-indicator *ngIf="isLoading"></processing-indicator>
+<div class="page">
+    <div class="header">
+        <span class="spacer"></span>
+        <h2><b>Products</b></h2>
+        <span class="spacer"></span>
+    </div>
+    <div class="header">
+        <span class="spacer"></span>
+        <mat-form-field appearance="fill">
+            <mat-label>Sort</mat-label>
+            <mat-select [(ngModel)]="sort" (selectionChange)="get()">
+                <mat-option value="name">Name</mat-option>
+                <mat-option value="new">Newest First</mat-option>
+                <mat-option value="old">Oldest First</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="reset()">
+            <mat-icon matTooltip="Reset">autorenew</mat-icon>
+        </button>
+        <span class="spacer"></span>
+    </div>
+    <br>
+    <div *ngIf="page && page.items && page.items.length" class="container page" style="min-height: 300px;">
+        <mat-card *ngFor="let product of page.items" class="orderCard">
+            <div class="row" style="width: 100%; margin: 0;">
+                <div class="col-3 details" style="margin: 0; padding: 0; margin-top: 20px;">
+                    <h5><b>Created On : </b>{{(product.createdOn || product.date) | date}}</h5>
+                </div>
+                <div class="col-3 details" style="margin: 0; padding: 0; margin-top: 20px;">
+                    <h5><b>Name : </b>{{product.name}}</h5>
+                </div>
+                <div class="col-6 details" style="margin: 0; padding: 0; margin-top: 20px;">
+                    <h5><b style="width: 30%;">Price : </b><input style="width: 35%; border: 1px solid black;" matInput
+                            [(ngModel)]="product.price">&nbsp;<button style="width: 30%;" (click)="updatePrice(product)"
+                            mat-raised-button color="accent"><b>Update</b></button></h5>
+                </div>
+                <div class="col-4 details" style="margin: 0; padding: 0; margin-top: 20px;">
+                    <h5><b>Category : </b>{{product.category}}</h5>
+                </div>
+                <div class="col-4 details" style="margin: 0; padding: 0; margin-top: 20px;">
+                    <h5><b>Photo : </b>{{product.photo}}</h5>
+                </div>
+                <div class="col-4 details" style="margin: 0; padding: 0; margin-top: 20px;">
+                    <h5><b>In Stock: </b><mat-slide-toggle [checked]="product.stock"
+                            (change)="updateStock(product, $event)"></mat-slide-toggle></h5>
+                </div>
+                <div class="col-12 details" style="margin: 0; padding: 0; margin-top: 20px;">
+                    <h5><b>Items : </b>{{product.items.toString()}}</h5>
+                </div>
+            </div>
+        </mat-card>
+        <div class="paginator">
+            <app-paginator #paginator [page]="this"></app-paginator>
+        </div>
+    </div>
+    <div *ngIf="page && (!page.items || !page.items.length)" class="empty">
+        <h4 class="emptyText">Oops ! You dont have any products.</h4>
+    </div>
+</div>

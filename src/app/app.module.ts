@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatNativeDateModule, MatProgressSpinnerModule, MatSelectModule, MatSnackBarModule, MatSpinner, MatStepperModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatNativeDateModule, MatProgressSpinnerModule, MatSelectModule, MatSlideToggleModule, MatSnackBarModule, MatStepperModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SnackBarComponent } from './services/ux.service';
@@ -14,6 +14,8 @@ import { OrderComponent } from './pages/order/order.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { MatCardModule } from '@angular/material';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { QueriesComponent } from './pages/queries/queries.component';
+import { ProductsComponent } from './pages/products/products.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     LoginComponent,
     OrderComponent,
     OrdersComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    QueriesComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,8 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     MatSnackBarModule,
     MatProgressSpinnerModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatSlideToggleModule
   ],
   exports: [],
   providers: [],
