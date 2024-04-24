@@ -1,0 +1,54 @@
+<processing-indicator *ngIf="isLoading"></processing-indicator>
+<div class="page">
+    <div class="header">
+        <span class="spacer"></span>
+        <h2><b>Queries</b></h2>
+        <span class="spacer"></span>
+    </div>
+    <div class="header">
+        <span class="spacer"></span>
+        <mat-form-field appearance="fill">
+            <mat-label>Sort</mat-label>
+            <mat-select [(ngModel)]="sort" (selectionChange)="get()">
+                <mat-option value="new">Newest First</mat-option>
+                <mat-option value="old">Oldest First</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="reset()">
+            <mat-icon matTooltip="Reset">autorenew</mat-icon>
+        </button>
+        <span class="spacer"></span>
+    </div>
+    <br>
+    <div *ngIf="page && page.items && page.items.length" class="container page" style="min-height: 300px;">
+        <mat-card *ngFor="let query of page.items" class="orderCard">
+            <div class="row" style="width: 100%; margin: 0;">
+                <div class="col-3 details" style="margin: 0; padding: 0;">
+                    <h5><b>Created On : </b>{{(query.createdOn || query.date) | date}}</h5>
+                </div>
+                <div class="col-3 details" style="margin: 0; padding: 0;">
+                    <h5><b>Name : </b>{{query.name}}</h5>
+                </div>
+                <div class="col-3 details" style="margin: 0; padding: 0;">
+                    <h5><b>Email : </b>{{query.email}}</h5>
+                </div>
+                <div class="col-3 details" style="margin: 0; padding: 0;">
+                    <h5><b>Phone : </b>{{query.phone}}</h5>
+                </div>
+                <div class="col-3 details" style="margin: 0; padding: 0;">
+                    <h5><b>Address : </b>{{query.address}}</h5>
+                </div>
+                <div class="col-3 details" style="margin: 0; padding: 0;">
+                    <h5><b>Message : </b>{{query.message}}</h5>
+                </div>
+            </div>
+        </mat-card>
+        <div class="paginator">
+            <app-paginator #paginator [page]="this"></app-paginator>
+        </div>
+    </div>
+    <div *ngIf="page && (!page.items || !page.items.length)" class="empty">
+        <h4 class="emptyText">Oops ! You dont have any queries.</h4>
+    </div>
+</div>

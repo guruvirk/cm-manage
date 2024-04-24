@@ -7,6 +7,9 @@
     </div>
 
     <nav id="navbar" class="navbar">
+      <a *ngIf="currentUser" class="nav-link" [routerLink]="['']" mat-button>Orders</a>
+      <a *ngIf="currentUser" class="nav-link" [routerLink]="['products']" mat-button>Products</a>
+      <a *ngIf="currentUser" class="nav-link" [routerLink]="['queries']" mat-button>Queries</a>
       <a *ngIf="currentUser" class="nav-link" (click)="logout()">Logout</a>
     </nav>
   </div>
