@@ -27,10 +27,20 @@
                 <h5><b>Name : </b>{{order.name}}</h5>
             </div>
             <div class="col-md-6 auto">
-                <h5><b>Phone : </b>0{{order.phone}}</h5>
+                <h5>
+                    <b>Phone :</b>
+                    <a [href]="'tel:' + formatNZPhone(order.phone.toString()).tel" class="phone-link">
+                        {{ formatNZPhone(order.phone.toString()).display }}
+                    </a>
+                </h5>
             </div>
             <div class="col-md-6 auto">
-                <h5><b>Email : </b>{{order.email}}</h5>
+                <h5>
+                    <b>Email :</b>
+                    <a [href]="'mailto:' + order.email" class="email-link">
+                        {{order.email}}
+                    </a>
+                </h5>
             </div>
             <div class="col-md-6 auto">
                 <h5><b>Size : </b>{{order.size}}</h5>

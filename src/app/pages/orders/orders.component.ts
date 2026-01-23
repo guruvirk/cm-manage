@@ -145,6 +145,28 @@ export class OrdersComponent implements OnInit, OnDestroy, IPager<Order> {
     return this.get(this.convertToPageOption(pageNo));
   }
 
+  formatNZPhone(rawPhone: string): { display: string; tel: string } {
+    if (!rawPhone) {
+      return { display: "", tel: "" };
+    }
+
+    let phone = rawPhone.replace(/[^\d+]/g, "");
+
+    if (phone.startsWith("+64")) {
+      phone = "0" + phone.substring(3);
+    } else if (phone.startsWith("64")) {
+      phone = "0" + phone.substring(2);
+    } else if (!phone.startsWith("0")) {
+      phone = "0" + phone;
+    }
+
+    const display = phone;
+
+    const tel = "+64" + phone.substring(1);
+
+    return { display, tel };
+  }
+
   private convertToPageOption(pageNo: number) {
     const options: any = {};
     if (this.page) {

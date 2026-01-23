@@ -53,7 +53,7 @@
                     <h5><b>Name : {{order.name}}</b></h5>
                     <div class="row" style="width: 100%; margin: 0;">
                         <div class="col-6 details" style="margin: 0; padding: 0;">
-                            <h6><b>Phone : </b>0{{order.phone}}</h6>
+                            <h6><b>Phone : </b>{{ formatNZPhone(order.phone.toString()).display }}</h6>
                             <br>
                             <h5><b>From</b></h5>
                             <h6>{{order.where.special}}</h6>
