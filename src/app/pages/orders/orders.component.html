@@ -45,7 +45,7 @@
                     <h5><b>Created On : </b>{{(order.createdOn || order.date) | date}}</h5>
                     <h5><b>Date : </b>{{order.date | date}} {{order.timeslot}}</h5>
                     <h6><b>Ordered Id : </b>{{order.code}}</h6>
-                    <h6><b>Size : </b>{{order.size}}</h6>
+                    <h6><b>Size : </b>{{(order.size || '') + (order.sizeDetails != order.size ? ' - ' + order.sizeDetails : '')}}</h6>
                     <br>
                     <h5><b>Status : {{order.status | titlecase}}</b></h5>
                 </div>

@@ -1,12 +1,12 @@
 ## Build Command
 
-> ng build --prod --base-href "https://manage.comfortmovers.co.nz/"
+> export NODE_OPTIONS=--openssl-legacy-provider && ng build --prod --base-href "https://manage.comfortmovers.co.nz/"
 
 ## Deploy Command
 
 > ngh
 
 ## Run Command
-open gitbash terminal
-export NODE_OPTIONS=--openssl-legacy-provider
-npm start
+open gitbash terminal - not required in mac
+
+> export NODE_OPTIONS=--openssl-legacy-provider && npm start
