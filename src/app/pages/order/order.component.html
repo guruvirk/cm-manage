@@ -29,7 +29,7 @@
             <div class="col-md-6 auto">
                 <h5>
                     <b>Phone :</b>
-                    <a [href]="'tel:' + formatNZPhone(order.phone.toString()).tel" class="phone-link">
+                    <a *ngIf="order && order.phone" [href]="'tel:' + formatNZPhone(order.phone.toString()).tel" class="phone-link">
                         {{ formatNZPhone(order.phone.toString()).display }}
                     </a>
                 </h5>
